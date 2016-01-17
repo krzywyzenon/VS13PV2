@@ -1,0 +1,35 @@
+﻿body {
+}
+
+.username {
+    color: gray
+}
+
+.username.focused {
+    color: black
+}
+
+.password {
+    color: gray
+    
+}
+
+.password.focused {
+    color: black;
+        
+    
+}
+
+.loginform {
+    top: 10px;
+    position: relative;
+}
+
+.jumbotron {
+    text-align: center;
+    
+}
+
+#logo-pizza {
+    width: 300px;
+}

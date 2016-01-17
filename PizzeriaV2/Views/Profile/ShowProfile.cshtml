@@ -1,0 +1,54 @@
+﻿@model PizzeriaV2.Models.Kund
+
+@{
+    ViewBag.Title = "ShowProfile";
+    Layout = "~/Views/Shared/_PizzaLayout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Profile", FormMethod.Post))
+        {
+    <table>
+
+        <tr>
+            <td>
+                @Html.HiddenFor(p=>p.KundID, new{@value = Model.KundID})
+            </td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>@Html.TextBoxFor(p => p.Namn, new{@value =  @Model.Namn})</td>
+        </tr>
+
+        <tr>
+            <td>Address:</td>
+            <td>@Html.TextBoxFor(p => p.Gatuadress, new { @value = @Model.Gatuadress })</td>
+        </tr>
+
+        <tr>
+            <td>Postal Code:</td>
+            <td>@Html.TextBoxFor(p => p.Postnr, new { @value = @Model.Postnr })</td>
+        </tr>
+
+        <tr>
+            <td>City:</td>
+            <td>@Html.TextBoxFor(p => p.Postort, new { @value = @Model.Postort })</td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td>@Html.TextBoxFor(p => p.Email, new { @value = @Model.Email })</td>
+        </tr>
+
+        <tr>
+            <td>Phone:</td>
+            <td>@Html.TextBoxFor(p => p.Telefon, new { @value = @Model.Telefon })</td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" value="Update profile" />
+            </td>
+        </tr>
+    </table>
+        }
+

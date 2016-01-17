@@ -1,0 +1,106 @@
+﻿@using PizzeriaV2.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/mainstyle.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/login.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron logo">
+            <img id="logo-pizza" src="~/Content/pizza7.png">
+        </div>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="Start">Start</a></li>
+                        @if ((int) Session["Logged"] != -1)
+                        {
+                            <li>@Html.ActionLink("My Profile", "ShowProfile", "Profile")</li>
+                        }
+                        <li>@Html.ActionLink("Register", "Register", "Main")</li>
+                        <li>@Html.ActionLink("Menu", "Index", "Menu")</li>
+                            @if (Session["Order"] != null)
+                            {
+                                Dictionary<int, int> tempList = (Dictionary<int, int>) Session["Order"];
+                                int amount = tempList.Count;
+                                string linktext = "Items in order: " + amount;
+                                <li>
+                                    @Html.ActionLink(linktext, "ShowOrder", "Order")
+                                </li>
+                                
+                            }
+                            else
+                            {
+                                <li>
+                                    <a> Items in order: 0</a> 
+                                </li>
+                            }
+                    </ul>
+                </div>
+                @if ((int)Session["Logged"] == -1)
+                {
+                    
+                    using (Html.BeginForm("Start", "Main", FormMethod.Post))
+                    {
+                        <table class="loginform">
+                            <tr>
+                                <td>
+                                    <input type ="text" name="username" placeholder="Username" class="username" id ="username"/>
+                                </td>
+
+                                <td>
+                                    <input type ="text" name="password" placeholder="Password" class="password" id ="Password"/>
+                                </td>
+
+                                <td>
+                                    <input type="submit" value="Login"/>
+                                </td>
+                                @if (ViewBag.ErrorMessage != null)
+                                {
+                                    <td>@ViewBag.ErrorMessage</td>
+                                }
+                            </tr>
+                        </table>
+                    }
+                }
+                else
+                {
+                    <div>
+
+                        @using (Html.BeginForm("Logout", "Main", FormMethod.Post))
+                        {
+                            <table class="loginform">
+                                <tr>
+                                    <td>
+                                        Hello @Session["Customer"]
+                                    </td>
+
+                                    <td>
+                                        <input type="submit" value="Logout"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                }
+            </div>
+
+        </nav>
+
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

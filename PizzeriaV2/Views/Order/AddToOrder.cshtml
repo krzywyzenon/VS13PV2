@@ -1,0 +1,36 @@
+﻿@model PizzeriaV2.Models.OrderSingleModel
+
+@{
+    ViewBag.Title = "AddOrder";
+    Layout = "~/Views/Shared/_PizzaLayout.cshtml";
+}
+
+<table>
+    
+    @using(Html.BeginForm("AddToOrder", "Order", FormMethod.Post))
+    {
+        <TR>
+            <td class="col-md-2">
+                @Html.HiddenFor(p => p.Matratt.MatrattNamn)
+                <label>@Model.Matratt.MatrattNamn </label>
+            </td>
+            <td class="col-md-1">
+                @Html.HiddenFor(p => p.Matratt.MatrattID, new { @value = Model.Matratt.MatrattID })
+            </td>
+            <td class="col-md-0">
+                @Html.TextBoxFor(p => p.Amount, new{@class="col-md-2"})
+            </td>
+            <td class="col-md-18">
+                @Html.ValidationMessageFor(p => p.Amount)
+                
+            </td>
+         </tr>
+         <tr>
+                
+            <td>
+                <input type="submit" value="Add to order"/>
+            </td>
+        </TR>
+    }
+</table>
+

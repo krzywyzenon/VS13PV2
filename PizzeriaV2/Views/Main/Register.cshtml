@@ -1,0 +1,77 @@
+﻿@model PizzeriaV2.Models.Kund
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "/Views/Shared/_PizzaLayout.cshtml";
+}
+
+<div>
+    @if (Model == null || @ViewBag.ErrorMessage!=null)
+    {
+
+        using (Html.BeginForm("Register", "Main", FormMethod.Post))
+        {
+            <table>
+
+                <tr>
+                    <td>Name:</td>
+                    <td>@Html.TextBoxFor(p => p.Namn) 
+                    @Html.ValidationMessageFor(p=>p.Namn)</td>
+                </tr>
+
+                <tr>
+                    <td>Address:</td>
+                    <td>@Html.TextBoxFor(p => p.Gatuadress)
+                    @Html.ValidationMessageFor(p => p.Gatuadress)</td>
+                </tr>
+
+                <tr>
+                    <td>Postal Code:</td>
+                    <td>@Html.TextBoxFor(p => p.Postnr)
+                    @Html.ValidationMessageFor(p => p.Postnr)</td>
+                </tr>
+
+                <tr>
+                    <td>City:</td>
+                    <td>@Html.TextBoxFor(p => p.Postort)
+                    @Html.ValidationMessageFor(p => p.Postort)</td>
+                </tr>
+
+                <tr>
+                    <td>Email:</td>
+                    <td>@Html.TextBoxFor(p => p.Email)
+                    @Html.ValidationMessageFor(p => p.Email)</td>
+                </tr>
+
+                <tr>
+                    <td>Phone:</td>
+                    <td>@Html.TextBoxFor(p => p.Telefon)
+                    @Html.ValidationMessageFor(p => p.Telefon)</td>
+                </tr>
+
+                <tr>
+                    <td>Username:</td>
+                    <td>@Html.TextBoxFor(p => p.AnvandarNamn)
+                    @Html.ValidationMessageFor(p => p.AnvandarNamn)</td>
+                </tr>
+
+                <tr>
+                    <td>Password:</td>
+                    <td>@Html.PasswordFor(p => p.Losenord)
+                    @Html.ValidationMessageFor(p => p.Losenord)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Register"/>
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+    else
+    {
+        <H2>Registration succesful</H2>
+    }
+
+</div>
+

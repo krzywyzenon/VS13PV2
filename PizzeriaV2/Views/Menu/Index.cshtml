@@ -1,0 +1,79 @@
+﻿@model PizzeriaV2.Models.MenuModel
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_PizzaLayout.cshtml";
+}
+
+<div class="col-md-2">
+    <table>
+
+        @using (Html.BeginForm("Index", "Menu", FormMethod.Post))
+        {
+            <tr>
+                <td>
+                    @Html.DropDownListFor(x => x.MatrattTyp.MatrattTyp1, Model.categories)
+
+                </td>
+                <td>
+                    <input type="submit" value="Show">
+
+                </td>
+            </tr>
+
+        }
+    </table>
+
+
+</div>
+
+<table class="table-bordered col-md-2">
+
+    @foreach (var matrat in Model.Matratts)
+    {
+        <tr>
+            <td class="badge">Name: </td>
+            <td class="text-center">@matrat.MatrattNamn</td>
+            @if ((int) Session["Logged"] == 1)
+            {
+                <td rowspan="4" class="col-md-2">@Html.ActionLink("Add to order", "AddToOrder", "Order", new {@id = @matrat.MatrattID}, null)</td>
+            }
+        </tr>
+        <tr>
+            <td class="badge">
+                Description:
+            </td>
+            <td class="text-center">
+                @matrat.Beskrivning
+            </td>
+        </tr>
+        <tr>
+            <td class="badge top">
+                Ingredients:
+            </td>
+            <td class="text-center">
+                @foreach (var ingredient in matrat.Produkts)
+                {
+                    <div>
+                        @ingredient.ProduktNamn
+                    </div>
+
+
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="badge">
+                Price:
+            </td>
+            <td class="text-center">
+                @matrat.Pris
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    }
+
+</table>
+
