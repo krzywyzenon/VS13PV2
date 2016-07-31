@@ -20,9 +20,15 @@
     
 }
 
+.greeting_cell {
+    color: wheat;
+}
+
 .loginform {
     top: 10px;
     position: relative;
+    border-collapse: separate;
+    border-spacing: 10px 0px;
 }
 
 .jumbotron {

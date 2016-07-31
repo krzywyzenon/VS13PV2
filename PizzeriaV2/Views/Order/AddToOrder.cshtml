@@ -9,6 +9,25 @@
     
     @using(Html.BeginForm("AddToOrder", "Order", FormMethod.Post))
     {
+        <tr>
+            
+            <td class="col-md-2">
+                Produkt:
+            </td>
+
+            <td class="col-md-1">
+                
+            </td>
+
+            <td class="col-md-0">
+                Antal:
+            </td>
+
+            <td class="col-md-18">
+                
+            </td>
+
+        </tr>
         <TR>
             <td class="col-md-2">
                 @Html.HiddenFor(p => p.Matratt.MatrattNamn)
